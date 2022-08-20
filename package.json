@@ -1,0 +1,21 @@
+{
+  "name": "ellie",
+  "version": "1.0.0",
+  "main": "backend/index.js",
+  "repository": "https://github.com/evertonfr7/ellie.git",
+  "author": "Everton Freitas and Cidrack",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.2",
+    "pm2": "^5.2.0"
+  },
+  "scripts": {
+    "start": "pm2-runtime start ecosystem.config.js --env production"
+  },
+  "engines": {
+    "node": "16.13.2"
+  }
+}

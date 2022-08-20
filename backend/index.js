@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../', '.env') });
 
-const port = 3333;
+const port = process.env.PORT || 80;
 
 const GuestsSchema = new mongoose.Schema({
     name: {
@@ -43,7 +43,7 @@ app.use(express.json());
 routes.post("*/confirm/:id", async (req, res) => {
     const { id } = req.params;
 
-    const guest = await Guests.find({ _id: id });
+    const guest = await Guests.findById(id);
 
     if(!guest){
         return res.status(404).send({
@@ -89,6 +89,12 @@ routes.get("*/confirmed-guests", async (req, res) => {
     return res.json(confirmedGuests);    
 });
 
+routes.get("*/helth", async (req, res) => {
+    return res.status(200).send({
+        message: "Server is running"
+    });    
+});
+
 
 routes.get("*/guests", async (req, res) => {
 
@@ -101,6 +107,8 @@ routes.get("*/guest/:id", async (req, res) => {
     const guest = await Guests.find({ _id: req.params.id });    
     return res.json(guest[0]?.name);    
 });
+
+app.use(express.static(path.join(__dirname, '../')));
 
 app.use(routes);
 
