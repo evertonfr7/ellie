@@ -51,7 +51,9 @@ routes.post("*/confirm/:id", async (req, res) => {
         });
     }
 
-    const confirmedGuest = await ConfirmedGuests.findOne({ id: guest[0]._id });
+    console.log(guest);
+
+    const confirmedGuest = await ConfirmedGuests.findOne({ id: guest._id });
 
     if(confirmedGuest){
         return res.status(400).send({
@@ -60,8 +62,8 @@ routes.post("*/confirm/:id", async (req, res) => {
     }
 
     await ConfirmedGuests.create({
-        name: guest[0].name,
-        id: guest[0]._id
+        name: guest.name,
+        id: guest._id
     });
 
     
