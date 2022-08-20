@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'safari';
+    src: url('../fonts/safari-webfont.woff2') format('woff2'),
+    url('../fonts/safari-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'safari', 'sans-serif';
+}
+
+p{
+    font-size: 20rem;
+}
