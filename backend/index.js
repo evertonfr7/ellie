@@ -20,6 +20,10 @@ const ConfirmedGuestsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    id: {
+        type: String,
+        required: true
+    },
 })
 
 const ConfirmedGuests = mongoose.model('ConfirmedGuests', ConfirmedGuestsSchema);
@@ -47,7 +51,7 @@ routes.post("*/confirm/:id", async (req, res) => {
         });
     }
 
-    const confirmedGuest = await ConfirmedGuests.findOne({ _id: id });
+    const confirmedGuest = await ConfirmedGuests.findOne({ id: guest[0]._id });
 
     if(confirmedGuest){
         return res.status(400).send({
@@ -57,6 +61,7 @@ routes.post("*/confirm/:id", async (req, res) => {
 
     await ConfirmedGuests.create({
         name: guest[0].name,
+        id: guest[0]._id
     });
 
     

@@ -8,6 +8,72 @@
     <title></title>
 </head>
 <body>
-    <p>Ellie</p>
+    <p>Olá <span></span></p>
+
+    <div></div>
+
+    <button style="display:none;" onclick="confirm()">
+        confirmar presença
+    </button>
+    
+    <script>
+
+        // get id from url
+        const url = window.location.search;
+        const id = url.split('?id=')[1];
+        fetch(`http://localhost:3333/guest/${id}`)
+        .then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+
+            document.querySelector('span').innerHTML = data;
+
+        }).catch(function(error) {
+            console.log(error);
+        }).finally(function() {
+            console.log('finally');
+        });
+
+        function confirm(){
+            fetch(`http://localhost:3333/confirm/${id}`, {
+                method: 'POST'
+            })
+            .then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+
+                document.querySelector('div').innerHTML = 'presença confirmada!';
+
+            }).catch(function(error) {
+                console.log(error);
+            });
+        }
+
+        function checkConfirm(){
+            fetch(`http://localhost:3333/confirm/${id}`, {
+                method: 'POST'
+            })
+            .then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+                if(data.message !== 'Guest already confirmed'){
+                    document.querySelector('button').style.display = 'block';
+                }
+            }).catch(function(error) {
+                console.log(error);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            checkConfirm();
+        });
+
+
+    </script>
+
+
 </body>
 </html>
