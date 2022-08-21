@@ -85,6 +85,26 @@ routes.post("*/create", async (req, res) => {
     });
 });
 
+// routes.get("*/create-all", async (req, res) => {
+
+//     const names = [];
+
+//     if(names.length === 0){
+//         return res.status(400).send({
+//             message: "No names provided"
+//         });
+//     }
+
+//     await Guests.insertMany(names.map(name => ({
+//         name
+//     })));
+
+//     return res.status(201).send({
+//         message: "Guests created"
+//     });
+
+// });
+
 routes.get("*/confirmed-guests", async (req, res) => {
 
     const confirmedGuests = await ConfirmedGuests.find();
