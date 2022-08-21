@@ -10,9 +10,154 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'safari', 'sans-serif';
+    font-family: 'sans-serif';
 }
 
-p{
-    font-size: 20rem;
+body{
+    overflow: hidden;
+}
+
+.container{
+    background-image: url('../imgs/bg.png');
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    max-width: 800px;
+    background-size: cover;
+    background-position: top center;
+    background-color: rgba(124, 227, 255, 0.121);
+}
+
+.text{
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20%;
+}
+
+.text .hello{
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+.text .guest{
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+    font-weight: bold;
+    color: #000;    
+}
+
+.text .long-text{
+    margin-bottom: 1rem;
+}
+
+img{
+    width: 120px;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    border-radius: 100%;
+}
+
+.infos{
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+}
+
+.date{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 20px;
+    font-weight: 700;
+    padding: 10px 25px 10px 0;
+    position: relative;
+    border-right: 1px solid #000;
+}
+
+.date .day{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.date .hour{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.place{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 25px;
+    font-weight: bold;
+}
+
+.place .buffet{
+    font-size: 1rem;
+}
+.place .street{
+    font-size: .8rem;
+}
+
+.animals{
+    background-image: url('../imgs/animals-jeep.png');
+    background-repeat: no-repeat;
+    width: 350px;
+    height: 368px;
+    position: absolute;
+    top: 66%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.6);    
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    bottom: 9%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.buttons > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+button, a{
+    background-color: transparent;
+    text-decoration: none;
+    display: flex;    
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(194, 106, 47);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(194, 106, 47, 0.9);
+}
+
+@keyframes run {
+    from{
+        transform: translate(-50%, -50%) scale(.5);
+    }
+
+    to{
+        transform: translate(-50%, -50%) translateX(1);
+    }
 }
