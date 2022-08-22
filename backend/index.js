@@ -51,8 +51,6 @@ routes.post("*/confirm/:id", async (req, res) => {
         });
     }
 
-    console.log(guest);
-
     const confirmedGuest = await ConfirmedGuests.findOne({ id: guest._id });
 
     if(confirmedGuest){
@@ -69,6 +67,22 @@ routes.post("*/confirm/:id", async (req, res) => {
     
     return res.status(200).send({
         message: "Guest confirmed"
+    });
+});
+
+routes.get("*/check-confirm/:id", async (req, res) => {
+    const { id } = req.params;
+
+    const confirmedGuest = await ConfirmedGuests.findOne({ id: id });
+
+    if(confirmedGuest){
+        return res.status(400).send({
+            message: "Guest already confirmed"
+        });
+    }
+
+    return res.status(200).send({
+        message: "Guest not confirmed"
     });
 });
 

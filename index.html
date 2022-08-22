@@ -13,11 +13,11 @@
 
         <div class="text">
             <p class="hello">Olá</p>
-            <p class="guest">Francisca dos Reis</p>
-            <p class="long-text">fghfghfg electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing</p>
+            <p class="guest"></p>
+            <p class="long-text">Meu primeiro aninho, é com muita alegria que te convido para celebrar comigo e minha família. Como ainda não sei assoprar a velinha conto com você para me ajudar!</p>
         </div>
 
-        <img src="https://i.imgur.com/vagNWw0.png" />
+        <img src="" />
 
         <div class="infos">
             <div class="date">
@@ -40,7 +40,8 @@
     
 
     <div class="buttons">
-        <button style="" onclick="confirm()">
+        <div class="feedback"></div>
+        <button class="confirm" onclick="confirm()">
             confirmar presença
         </button>
         <div>
@@ -56,32 +57,27 @@
     
     <script>
 
-        const url = window.location.search;
-        const id = url.split('?id=')[1];
-        fetch(`http://localhost:3333/guest/${id}`)
+        const url = window.location.hash;
+        const id = url.split('#')[1];
+        console.log('id', id);
+        fetch(`https://ellie-backend.herokuapp.com/guest/${id}`)
         .then(function(response) {
             return response.json();
         }).then(function(data) {
-            console.log(data);
-
-            document.querySelector('span').innerHTML = data;
-
+            document.querySelector('.guest').innerHTML = data;
         }).catch(function(error) {
             console.log(error);
-        }).finally(function() {
-            console.log('finally');
         });
 
         function confirm(){
-            fetch(`http://localhost:3333/confirm/${id}`, {
+            fetch(`https://ellie-backend.herokuapp.com/confirm/${id}`, {
                 method: 'POST'
             })
             .then(function(response) {
                 return response.json();
             }).then(function(data) {
-                console.log(data);
-
-                document.querySelector('div').innerHTML = 'presença confirmada!';
+                document.querySelector('.confirm').style.display = 'none';
+                document.querySelector('.feedback').innerHTML = 'presença confirmada!';
 
             }).catch(function(error) {
                 console.log(error);
@@ -89,15 +85,15 @@
         }
 
         function checkConfirm(){
-            fetch(`http://localhost:3333/confirm/${id}`, {
-                method: 'POST'
+            fetch(`https://ellie-backend.herokuapp.com/check-confirm/${id}`, {
+                method: 'GET'
             })
             .then(function(response) {
                 return response.json();
-            }).then(function(data) {
-                console.log(data);
-                if(data.message !== 'Guest already confirmed'){
-                    document.querySelector('button').style.display = 'block';
+            }).then(function(data) {                
+                if(data.message === 'Guest already confirmed'){
+                    document.querySelector('.confirm').disabled = true;
+                    document.querySelector('.confirm').innerHTML = 'presença já confirmada!';
                 }
             }).catch(function(error) {
                 console.log(error);
@@ -105,7 +101,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            // checkConfirm();
+            checkConfirm();
         });
 
 
