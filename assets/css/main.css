@@ -17,6 +17,52 @@ body{
     overflow: hidden;
 }
 
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .7);
+    backdrop-filter: blur(2px);
+    z-index: 100;
+}
+
+.bgs{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.5);
+    animation: 1s loading infinite;    
+}
+
+.bg-01 {
+    min-width: 209px; height: 200px;    
+    opacity: 0;
+    background: url('./../imgs/css_sprites.png') -228px -0;
+}
+
+.bg-02 {
+    min-width: 228px; height: 239px;
+    opacity: 0;
+    background: url('./../imgs/css_sprites.png') -0 -0;
+    animation-delay: 250ms;
+}
+
+.bg-03 {
+    min-width: 201px; height: 244px;
+    opacity: 0;
+    background: url('./../imgs/css_sprites.png') -0 -239px;
+    animation-delay: 500ms;
+}
+
+.bg-04 {
+    min-width: 168px; height: 205px;
+    opacity: 0;
+    background: url('./../imgs/css_sprites.png') -228px -200px;
+    animation-delay: 750ms;
+}
+
 .container{
     background-image: url('../imgs/bg.png');
     background-repeat: no-repeat;
@@ -163,5 +209,41 @@ button:disabled{
 
     to{
         transform: translate(-50%, -50%) translateX(1);
+    }
+}
+
+@keyframes loading {
+    0%{
+        opacity: 1;
+    }
+    10%{
+        opacity: 1;
+    }
+    20%{
+        opacity: 1;
+    }
+    30%{
+        opacity: 0;
+    }
+    40%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    60%{
+        opacity: 0;
+    }
+    70%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 0;
+    }
+    90%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
     }
 }
