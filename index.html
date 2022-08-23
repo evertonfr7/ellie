@@ -21,7 +21,7 @@
         <div class="text">
             <p class="hello">Olá</p>
             <p class="guest"></p>
-            <p class="long-text">Meu primeiro aninho, é com muita alegria que te convido para celebrar comigo e minha família. <span>Como ainda não sei assoprar a velinha conto com você para me ajudar!</span></p>
+            <p class="long-text">Meu primeiro aninho, é com muita alegria que te convido para celebrar comigo e minha família. <span>Como ainda não sei assoprar a velinha, conto com você para me ajudar!</span></p>
         </div>
 
         <img src="./assets/imgs/ellie.png" />
@@ -64,7 +64,6 @@
 
         const url = window.location.hash;
         const id = url.split('#')[1];
-        console.log('id', id);
         fetch(`https://ellie-backend.herokuapp.com/guest/${id}`)
         .then(function(response) {
             return response.json();
@@ -111,6 +110,11 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+
+            if(!id){
+                document.querySelector('.confirm').style.display = 'none';
+            }
+
             checkConfirm();
         });
 
