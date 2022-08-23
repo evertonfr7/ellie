@@ -1,2 +1,0 @@
-- o site deve ser responsivo
-- mudar a fonte para aceitar acentos
