@@ -1,6 +1,2 @@
-- texto descritivo sobre o evento *
-- onde esse site vai ficar hospedado (???)
-- devemos comprar um domínio (???) provavelmente < R$50,00/ano
 - o site deve ser responsivo
 - mudar a fonte para aceitar acentos
-- contagem regressiva (opt)
